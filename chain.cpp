@@ -1,12 +1,12 @@
-#include "chain.h"
+п»ї#include "chain.h"
 
-LinkedList::LinkedList() : head(nullptr), chain(nullptr) {}// Конструктор 
-LinkedList::~LinkedList()// Деструктор - очищает память
+LinkedList::LinkedList() : head(nullptr), chain(nullptr) {}// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ 
+LinkedList::~LinkedList()// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ - РѕС‡РёС‰Р°РµС‚ РїР°РјСЏС‚СЊ
 {
     Clear(head);
     Clear(chain);
 }
-void LinkedList::Add(const string& word)// Добавление слова в конец списка
+void LinkedList::Add(const string& word)// Р”РѕР±Р°РІР»РµРЅРёРµ СЃР»РѕРІР° РІ РєРѕРЅРµС† СЃРїРёСЃРєР°
 {
     Node* newNode = new Node(word);
     if (!head)  
@@ -24,31 +24,31 @@ void LinkedList::Add(const string& word)// Добавление слова в конец списка
     }
     flag.push_back(false);  
 }
-bool LinkedList::IsCorrect(const string& word) // Проверка на правильный ввод
+bool LinkedList::IsCorrect(const string& word) // РџСЂРѕРІРµСЂРєР° РЅР° РїСЂР°РІРёР»СЊРЅС‹Р№ РІРІРѕРґ
 {
     for (char c : word)
     {
-        if (!((c >= 'а' && c <= 'я') || c == 'ь' || c == 'ё'))
+        if (!((c >= 'Р°' && c <= 'СЏ') || c == 'СЊ' || c == 'С‘'))
         {
             return false;
         }
     }
     return true;
 }
-char LinkedList::LastChar(const string& word)// Получение последней буквы слова
+char LinkedList::LastChar(const string& word)// РџРѕР»СѓС‡РµРЅРёРµ РїРѕСЃР»РµРґРЅРµР№ Р±СѓРєРІС‹ СЃР»РѕРІР°
 {
     if (word.empty())
     {
-        throw "Пусто";
+        throw "РџСѓСЃС‚Рѕ";
     }
     char last = word.back();  
-    if (last == 'ь' && word.size() > 1)
+    if (last == 'СЊ' && word.size() > 1)
     {
         return word[word.size() - 2]; 
     }
     return last;
 }
-bool LinkedList::FindChain(Node* currtail) // Рекурсивный поиск цепочки
+bool LinkedList::FindChain(Node* currtail) // Р РµРєСѓСЂСЃРёРІРЅС‹Р№ РїРѕРёСЃРє С†РµРїРѕС‡РєРё
 {
     if (count(flag.begin(), flag.end(), false) == 0)
     {
@@ -110,7 +110,7 @@ bool LinkedList::FindChain(Node* currtail) // Рекурсивный поиск цепочки
     }
     return false;
 }
-void LinkedList::Clear(Node*& Head) // Очистка списка
+void LinkedList::Clear(Node*& Head) // РћС‡РёСЃС‚РєР° СЃРїРёСЃРєР°
 {
     while (Head)
     {
@@ -119,21 +119,21 @@ void LinkedList::Clear(Node*& Head) // Очистка списка
         delete temp;
     }
 }
-void LinkedList::BuildFromFile(const string& filename)// Загрузка слов из файла
+void LinkedList::BuildFromFile(const string& filename)// Р—Р°РіСЂСѓР·РєР° СЃР»РѕРІ РёР· С„Р°Р№Р»Р°
 {
     ifstream input(filename);
     if (!input.is_open())
     {
-        throw "Не удалось открыть файл";
+        throw "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»";
     }
     string first;
     if (!(input >> first))
     {
-        throw "Файл пуст";
+        throw "Р¤Р°Р№Р» РїСѓСЃС‚";
     }
     if (!IsCorrect(first))
     {
-        throw "Недопустимые символы в первом слове";
+        throw "РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹ РІ РїРµСЂРІРѕРј СЃР»РѕРІРµ";
     }
     Add(first);
     string word;
@@ -142,12 +142,12 @@ void LinkedList::BuildFromFile(const string& filename)// Загрузка слов из файла
         if (!IsCorrect(word))
         {
             Clear(head);
-            throw "Недопустимые символы. Используйте только нижний регистр и русские буквы!";
+            throw "РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹. РСЃРїРѕР»СЊР·СѓР№С‚Рµ С‚РѕР»СЊРєРѕ РЅРёР¶РЅРёР№ СЂРµРіРёСЃС‚СЂ Рё СЂСѓСЃСЃРєРёРµ Р±СѓРєРІС‹!";
         }
         Add(word);
     }
 }
-void LinkedList::PrintOriginal(ostream& out) const // Вывод исходного списка
+void LinkedList::PrintOriginal(ostream& out) const // Р’С‹РІРѕРґ РёСЃС…РѕРґРЅРѕРіРѕ СЃРїРёСЃРєР°
 {
     Node* curr = head;
     while (curr)
@@ -161,11 +161,11 @@ void LinkedList::PrintOriginal(ostream& out) const // Вывод исходного списка
     }
     out << endl;
 }
-bool LinkedList::Solve()// Построение цепочки
+bool LinkedList::Solve()// РџРѕСЃС‚СЂРѕРµРЅРёРµ С†РµРїРѕС‡РєРё
 {
     return FindChain(nullptr);
 }
-void LinkedList::Print(ostream& out) const // Вывод результата
+void LinkedList::Print(ostream& out) const // Р’С‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 {
     Node* curr = chain;
     while (curr)
@@ -179,7 +179,7 @@ void LinkedList::Print(ostream& out) const // Вывод результата
     }
     if (!chain)
     {
-        out << "Цепочка не найдена";
+        out << "Р¦РµРїРѕС‡РєР° РЅРµ РЅР°Р№РґРµРЅР°";
     }
     out << endl;
 }

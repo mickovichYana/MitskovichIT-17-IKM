@@ -1,4 +1,4 @@
-#ifndef CHAIN_H
+п»ї#ifndef CHAIN_H
 #define CHAIN_H
 #include <iostream>
 #include <fstream>
@@ -14,23 +14,23 @@ private:
     {
         string word;   
         Node* next;     
-        Node(const string& w) : word(w), next(nullptr) {} // Конструктор узла
+        Node(const string& w) : word(w), next(nullptr) {} // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СѓР·Р»Р°
     };
     Node* head;        
     Node* chain;        
     vector<bool> flag;  
-    void Add(const string& word);            // Добавление слова в список
-    bool IsCorrect(const string& word);      // Проверка корректности слова
-    char LastChar(const string& word);       // Получение последней буквы 
-    bool FindChain(Node* currtail);          // Рекурсивный поиск цепочки
-    void Clear(Node*& Head);                 // Очистка списка
+    void Add(const string& word);            // Р”РѕР±Р°РІР»РµРЅРёРµ СЃР»РѕРІР° РІ СЃРїРёСЃРѕРє
+    bool IsCorrect(const string& word);      // РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё СЃР»РѕРІР°
+    char LastChar(const string& word);       // РџРѕР»СѓС‡РµРЅРёРµ РїРѕСЃР»РµРґРЅРµР№ Р±СѓРєРІС‹ 
+    bool FindChain(Node* currtail);          // Р РµРєСѓСЂСЃРёРІРЅС‹Р№ РїРѕРёСЃРє С†РµРїРѕС‡РєРё
+    void Clear(Node*& Head);                 // РћС‡РёСЃС‚РєР° СЃРїРёСЃРєР°
 public:
-    // Конструктор и деструктор
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Рё РґРµСЃС‚СЂСѓРєС‚РѕСЂ
     LinkedList();
     ~LinkedList();
-    void BuildFromFile(const string& filename);  // Загрузка слов из файла
-    void PrintOriginal(ostream& out) const;      // Вывод исходных слов
-    bool Solve();                                // Построение цепочки
-    void Print(ostream& out) const;              // Вывод результата
+    void BuildFromFile(const string& filename);  // Р—Р°РіСЂСѓР·РєР° СЃР»РѕРІ РёР· С„Р°Р№Р»Р°
+    void PrintOriginal(ostream& out) const;      // Р’С‹РІРѕРґ РёСЃС…РѕРґРЅС‹С… СЃР»РѕРІ
+    bool Solve();                                // РџРѕСЃС‚СЂРѕРµРЅРёРµ С†РµРїРѕС‡РєРё
+    void Print(ostream& out) const;              // Р’С‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 };
 #endif
